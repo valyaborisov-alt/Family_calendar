@@ -1,74 +1,83 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f5f7fb">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="apple-mobile-web-app-title" content="Семья">
-<link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icon.svg">
-<title>Семейный календарь</title>
-<style>
-:root{--bg:#f5f7fb;--card:#fff;--ink:#162033;--muted:#70798b;--line:#e6e9f0;--shadow:0 10px 34px rgba(26,35,52,.07);--radius:22px;--me:#dcecff;--wife:#fde3ef;--kids:#dff4e6;--family:#fff0c8;--primary:#172033;--danger:#b42318}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Segoe UI",sans-serif}body{padding:env(safe-area-inset-top) max(20px,env(safe-area-inset-right)) env(safe-area-inset-bottom) max(20px,env(safe-area-inset-left))}button,input,select,textarea{font:inherit}button{touch-action:manipulation}.app{max-width:1280px;margin:0 auto;padding:26px 0 40px}.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;margin-bottom:22px}.eyebrow{color:var(--muted);font-size:12px;font-weight:750;letter-spacing:.08em}h1{margin:4px 0 8px;font-size:clamp(34px,5vw,54px);line-height:1;letter-spacing:-.045em}.status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px}.dot{width:9px;height:9px;border-radius:50%;background:#5c83d5}.btn,.iconbtn{border:0;border-radius:15px;cursor:pointer;min-height:46px}.btn{padding:11px 16px;font-weight:680}.primary{background:var(--primary);color:#fff}.secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}.danger{background:#fff0ef;color:var(--danger);border:1px solid #f2cbc5}.iconbtn{width:46px;background:#fff;border:1px solid var(--line);font-size:28px}.controls{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.segmented{display:flex;background:#e9ecf2;padding:5px;border-radius:17px}.viewbtn{border:0;background:transparent;border-radius:13px;padding:10px 18px;color:var(--muted);font-weight:680;cursor:pointer}.viewbtn.active{background:#fff;color:var(--ink);box-shadow:0 1px 5px rgba(23,32,51,.1)}.nav{display:flex;gap:8px;align-items:center}.period{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}h2{margin:0;font-size:23px}.legend{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.pill{padding:7px 11px;border-radius:999px;font-size:13px;font-weight:650}.me{background:var(--me)}.wife{background:var(--wife)}.kids{background:var(--kids)}.family{background:var(--family)}.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:10px}.day{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);min-height:195px;padding:13px;box-shadow:var(--shadow)}.day.today{outline:2px solid var(--primary);outline-offset:-2px}.dayname{color:var(--muted);font-size:12px;text-transform:uppercase;font-weight:750}.daynum{font-size:25px;font-weight:760;margin-top:2px}.month{color:var(--muted);font-size:11px}.empty{color:#a0a6b2;font-size:13px;padding-top:10px}.event{border:0;width:100%;text-align:left;border-radius:14px;padding:9px 10px;margin-top:7px;cursor:pointer;color:var(--ink)}.event .time{display:block;color:#586172;font-size:11px;font-weight:750;margin-bottom:3px}.event .title{font-size:13px;font-weight:680}.event .meta{font-size:11px;color:#687181;margin-top:4px;display:block}.todaylist{display:grid;gap:11px}.todaycard{width:100%;border:1px solid var(--line);border-radius:20px;background:#fff;padding:15px 16px;display:grid;grid-template-columns:110px 1fr auto;gap:14px;align-items:center;box-shadow:var(--shadow);cursor:pointer;text-align:left;color:var(--ink)}.todaycard.me{background:linear-gradient(90deg,var(--me),#fff 55%)}.todaycard.wife{background:linear-gradient(90deg,var(--wife),#fff 55%)}.todaycard.kids{background:linear-gradient(90deg,var(--kids),#fff 55%)}.todaycard.family{background:linear-gradient(90deg,var(--family),#fff 55%)}.todaytime{font-size:14px;color:var(--muted);font-weight:680}.todaytitle{font-size:19px;font-weight:730}.todaymeta{font-size:13px;color:var(--muted);margin-top:4px}.chev{font-size:27px;color:#9299a6}.note{color:#8a92a0;font-size:12px;text-align:center;margin:18px 6px 0}dialog{border:0;border-radius:25px;padding:0;width:min(92vw,620px);box-shadow:0 35px 100px rgba(17,24,39,.30)}dialog::backdrop{background:rgba(17,24,39,.42);backdrop-filter:blur(4px)}.modal{padding:22px}.modalhead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:15px}.modalhead h3{margin:4px 0 0;font-size:26px}.field{display:grid;gap:6px;margin-bottom:13px}.field>span{font-size:13px;color:var(--muted);font-weight:650}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:14px;padding:12px 13px;background:#fff;color:var(--ink);width:100%}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;align-items:center;gap:9px;margin-top:18px}.spacer{flex:1}.hidden{display:none!important}
-@media(max-width:980px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:700px){.app{padding-top:14px}.topbar,.controls,.period{flex-direction:column;align-items:stretch}.topbar .btn{width:100%}.segmented{width:100%}.viewbtn{flex:1}.nav{justify-content:space-between}.legend{justify-content:flex-start}.grid{grid-template-columns:1fr}.day{min-height:auto}.todaycard{grid-template-columns:82px 1fr auto}.two{grid-template-columns:1fr}}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f6fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Семья">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css?v=5">
+  <title>Семейный календарь</title>
 </head>
 <body>
-<div class="app">
-<header class="topbar">
-  <div><div class="eyebrow">СЕМЬЯ</div><h1>Семейный календарь</h1><div class="status"><span class="dot"></span><span>Локальный режим · события сохраняются на этом устройстве</span></div></div>
-  <button id="addBtn" class="btn primary">＋ Добавить событие</button>
-</header>
-<section class="controls">
-  <div class="segmented"><button class="viewbtn active" data-view="today">Сегодня</button><button class="viewbtn" data-view="week">Неделя</button><button class="viewbtn" data-view="month">Месяц</button></div>
-  <div class="nav"><button id="prevBtn" class="iconbtn">‹</button><button id="todayBtn" class="btn secondary">Сегодня</button><button id="nextBtn" class="iconbtn">›</button></div>
-</section>
-<section class="period"><h2 id="periodTitle"></h2><div class="legend"><span class="pill me">👨 Я</span><span class="pill wife">👩 Жена</span><span class="pill kids">👧 Дети</span><span class="pill family">🏠 Общее</span></div></section>
-<main id="calendar"></main>
-<div class="note">Google Calendar пока не подключён. Следующим этапом можно добавить общую синхронизацию между всеми устройствами.</div>
+<div class="shell">
+  <div class="layout">
+    <aside class="panel sidebar">
+      <div class="brand">
+        <div class="brand-icon">⌘</div>
+        <div><h1>Наш календарь</h1><small>Семейный планировщик</small></div>
+      </div>
+      <button type="button" id="addBtn" class="new-event">＋ Новое событие</button>
+      <div class="mini-title">Календарь</div>
+      <div id="miniCalendar" class="mini-calendar"></div>
+      <div class="section-label">Показывать</div>
+      <div class="filters">
+        <label class="filter"><input type="checkbox" data-filter="me" checked><span class="swatch me"></span><span>Я</span></label>
+        <label class="filter"><input type="checkbox" data-filter="wife" checked><span class="swatch wife"></span><span>Жена</span></label>
+        <label class="filter"><input type="checkbox" data-filter="kids" checked><span class="swatch kids"></span><span>Дети</span></label>
+        <label class="filter"><input type="checkbox" data-filter="family" checked><span class="swatch family"></span><span>Общее</span></label>
+      </div>
+      <div class="install-note">На iPad: Safari → Поделиться → «На экран Домой». Google-синхронизацию подключим следующим этапом.</div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="date-title"><div class="eyebrow">Семейный календарь</div><h2 id="periodTitle"></h2></div>
+        <div class="top-actions">
+          <button type="button" id="prevBtn" class="btn icon-btn">‹</button>
+          <button type="button" id="todayBtn" class="btn">Сегодня</button>
+          <button type="button" id="nextBtn" class="btn icon-btn">›</button>
+          <div class="segmented">
+            <button type="button" data-view="today">День</button>
+            <button type="button" data-view="week">Неделя</button>
+            <button type="button" data-view="month">Месяц</button>
+          </div>
+        </div>
+      </div>
+      <section id="calendar" class="panel calendar-panel"></section>
+    </main>
+
+    <aside id="detail" class="panel detail"></aside>
+  </div>
 </div>
-<dialog id="dlg">
-<form id="form" class="modal">
-<div class="modalhead"><div><div class="eyebrow" id="mode">НОВОЕ СОБЫТИЕ</div><h3 id="dlgTitle">Добавить событие</h3></div><button type="button" id="closeBtn" class="iconbtn">×</button></div>
-<input type="hidden" id="eid">
-<label class="field"><span>Для кого</span><select id="who"><option value="🏠">🏠 Общее</option><option value="👨">👨 Я</option><option value="👩">👩 Жена</option><option value="👧">👧 Дети</option></select></label>
-<label class="field"><span>Название</span><input id="title" required placeholder="Например: школа, врач, тренировка"></label>
-<div class="two"><label class="field"><span>Начало</span><input id="start" type="datetime-local" required></label><label class="field"><span>Окончание</span><input id="end" type="datetime-local" required></label></div>
-<label class="field"><span>Описание</span><textarea id="desc" rows="3" placeholder="Необязательно"></textarea></label>
-<label class="field"><span>Место</span><input id="location" placeholder="Необязательно"></label>
-<div class="actions"><button type="button" id="deleteBtn" class="btn danger hidden">Удалить</button><div class="spacer"></div><button type="button" id="cancelBtn" class="btn secondary">Отмена</button><button type="submit" class="btn primary">Сохранить</button></div>
-</form>
-</dialog>
-<script>
-const $=s=>document.querySelector(s), cal=$("#calendar"), dlg=$("#dlg"), KEY="family-calendar-events-v2";let view="today", cursor=new Date(), cache=new Map();
-const pad=n=>String(n).padStart(2,"0"), inputVal=d=>d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate())+"T"+pad(d.getHours())+":"+pad(d.getMinutes());
-const sod=d=>{let x=new Date(d);x.setHours(0,0,0,0);return x},eod=d=>{let x=new Date(d);x.setHours(23,59,59,999);return x},sow=d=>{let x=sod(d),n=(x.getDay()+6)%7;x.setDate(x.getDate()-n);return x},eow=d=>{let x=sow(d);x.setDate(x.getDate()+6);return eod(x)},som=d=>new Date(d.getFullYear(),d.getMonth(),1),eom=d=>new Date(d.getFullYear(),d.getMonth()+1,0,23,59,59,999);
-function range(){return view==="today"?[sod(cursor),eod(cursor)]:view==="week"?[sow(cursor),eow(cursor)]:[som(cursor),eom(cursor)]}
-const fmt=(d,o)=>new Intl.DateTimeFormat("ru-RU",o).format(d), clean=s=>(s||"").replace(/^(🏠|👨|👩|👧|👦)\s*/,"").trim(), who=s=>((s||"").match(/^(🏠|👨|👩|👧|👦)/)||["🏠"])[0], cat=s=>s?.startsWith("👨")?"me":s?.startsWith("👩")?"wife":s?.startsWith("👧")||s?.startsWith("👦")?"kids":"family", esc=s=>String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m])), same=(a,b)=>a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();
-const es=e=>new Date(e.start),ee=e=>new Date(e.end),id=()=>crypto?.randomUUID?crypto.randomUUID():"e-"+Date.now()+"-"+Math.random().toString(16).slice(2);
-function seed(){let n=new Date();return[{id:id(),summary:"🏠 Семейный ужин",location:"Дом",description:"",start:new Date(n.getFullYear(),n.getMonth(),n.getDate(),19).toISOString(),end:new Date(n.getFullYear(),n.getMonth(),n.getDate(),20).toISOString()},{id:id(),summary:"👧 Танцы",location:"Студия",description:"",start:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,17,30).toISOString(),end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,18,30).toISOString()},{id:id(),summary:"👩 Врач",location:"",description:"",start:new Date(n.getFullYear(),n.getMonth(),n.getDate()+2,10).toISOString(),end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+2,11).toISOString()},{id:id(),summary:"👨 Тренировка",location:"",description:"",start:new Date(n.getFullYear(),n.getMonth(),n.getDate()+3,20).toISOString(),end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+3,21).toISOString()}]}
-function all(){try{let x=JSON.parse(localStorage.getItem(KEY)||"null");if(Array.isArray(x))return x}catch{}let x=seed();localStorage.setItem(KEY,JSON.stringify(x));return x}
-function save(x){localStorage.setItem(KEY,JSON.stringify(x))}
-function events(){let[a,b]=range();return all().filter(e=>es(e)>=a&&es(e)<=b).sort((x,y)=>es(x)-es(y)}
-function period(){let[a,b]=range();return view==="today"?fmt(a,{weekday:"long",day:"numeric",month:"long",year:"numeric"}):view==="week"?fmt(a,{day:"numeric",month:"short"})+" — "+fmt(b,{day:"numeric",month:"short",year:"numeric"}):fmt(a,{month:"long",year:"numeric"})}
-function card(e,today=false){let s=es(e),en=ee(e),c=cat(e.summary),t=esc(clean(e.summary)),m=e.location||e.description||"";return today?`<button class="todaycard ${c}" data-id="${esc(e.id)}"><div class="todaytime">${fmt(s,{hour:"2-digit",minute:"2-digit"})}<br>— ${fmt(en,{hour:"2-digit",minute:"2-digit"})}</div><div><div class="todaytitle">${who(e.summary)} ${t}</div>${m?`<div class="todaymeta">${esc(m)}</div>`:""}</div><div class="chev">›</div></button>`:`<button class="event ${c}" data-id="${esc(e.id)}"><span class="time">${fmt(s,{hour:"2-digit",minute:"2-digit"})}</span><span class="title">${who(e.summary)} ${t}</span>${e.location?`<span class="meta">⌖ ${esc(e.location)}</span>`:""}</button>`}
-function bind(){document.querySelectorAll("[data-id]").forEach(b=>b.onclick=()=>{let e=cache.get(b.dataset.id);if(e)edit(e)})}
-function render(){let ev=events();cache=new Map(ev.map(e=>[e.id,e]));$("#periodTitle").textContent=period();if(view==="today"){cal.innerHTML=ev.length?`<div class="todaylist">${ev.map(e=>card(e,true)).join("")}</div>`:`<section class="day"><div class="empty">На этот день событий нет.</div></section>`}else{let[a,b]=range(),ds=[];for(let d=new Date(a);d<=b;d.setDate(d.getDate()+1))ds.push(new Date(d));cal.innerHTML=`<div class="grid">${ds.map(d=>{let x=ev.filter(e=>same(es(e),d));return `<section class="day ${same(d,new Date())?"today":""}"><div class="dayname">${fmt(d,{weekday:"short"})}</div><div class="daynum">${d.getDate()}</div><div class="month">${fmt(d,{month:"short"})}</div>${x.length?x.map(e=>card(e)).join(""):`<div class="empty">Свободно</div>`}</section>`}).join("")}</div>`}bind()}
-function fresh(){let s=new Date();s.setMinutes(Math.ceil(s.getMinutes()/15)*15,0,0);let e=new Date(s.getTime()+3600000);$("#eid").value="";$("#mode").textContent="НОВОЕ СОБЫТИЕ";$("#dlgTitle").textContent="Добавить событие";$("#deleteBtn").classList.add("hidden");$("#who").value="🏠";$("#title").value="";$("#desc").value="";$("#location").value="";$("#start").value=inputVal(s);$("#end").value=inputVal(e);dlg.showModal()}
-function edit(e){$("#eid").value=e.id;$("#mode").textContent="РЕДАКТИРОВАНИЕ";$("#dlgTitle").textContent=clean(e.summary);$("#deleteBtn").classList.remove("hidden");$("#who").value=who(e.summary);$("#title").value=clean(e.summary);$("#desc").value=e.description||"";$("#location").value=e.location||"";$("#start").value=inputVal(es(e));$("#end").value=inputVal(ee(e));dlg.showModal()}
-$("#addBtn").onclick=fresh;$("#closeBtn").onclick=()=>dlg.close();$("#cancelBtn").onclick=()=>dlg.close();
-$("#form").onsubmit=e=>{e.preventDefault();let eid=$("#eid").value.trim(),s=new Date($("#start").value),en=new Date($("#end").value);if(!(s<en)){alert("Время окончания должно быть позже начала.");return}let item={id:eid||id(),summary:$("#who").value+" "+$("#title").value.trim(),description:$("#desc").value.trim(),location:$("#location").value.trim(),start:s.toISOString(),end:en.toISOString()},x=all(),i=x.findIndex(a=>a.id===item.id);if(i>=0)x[i]=item;else x.push(item);save(x);dlg.close();render()};
-$("#deleteBtn").onclick=()=>{let eid=$("#eid").value.trim();if(eid&&confirm("Удалить это событие?")){save(all().filter(e=>e.id!==eid));dlg.close();render()}};
-document.querySelectorAll(".viewbtn").forEach(b=>b.onclick=()=>{document.querySelectorAll(".viewbtn").forEach(x=>x.classList.remove("active"));b.classList.add("active");view=b.dataset.view;render()});
-$("#prevBtn").onclick=()=>{view==="today"?cursor.setDate(cursor.getDate()-1):view==="week"?cursor.setDate(cursor.getDate()-7):cursor.setMonth(cursor.getMonth()-1);render()};
-$("#nextBtn").onclick=()=>{view==="today"?cursor.setDate(cursor.getDate()+1):view==="week"?cursor.setDate(cursor.getDate()+7):cursor.setMonth(cursor.getMonth()+1);render()};
-$("#todayBtn").onclick=()=>{cursor=new Date();render()};
-if("serviceWorker"in navigator)navigator.serviceWorker.register("/sw.js").catch(()=>{});
-render();
-</script>
+
+<div id="modalBackdrop" class="modal-backdrop">
+  <form id="eventForm" class="modal">
+    <div class="modal-head">
+      <div><div id="modalMode" class="small">Новое событие</div><h3 id="modalTitle">Добавить событие</h3></div>
+      <button type="button" id="modalClose" class="close-btn">×</button>
+    </div>
+    <input type="hidden" id="eventId">
+    <label class="field"><span>Для кого</span><select id="eventWho"><option value="🏠">🏠 Общее</option><option value="👨">👨 Я</option><option value="👩">👩 Жена</option><option value="👧">👧 Дети</option></select></label>
+    <label class="field"><span>Название</span><input id="eventTitle" required placeholder="Например: школа, врач, тренировка"></label>
+    <div class="two">
+      <label class="field"><span>Начало</span><input id="eventStart" type="datetime-local" required></label>
+      <label class="field"><span>Окончание</span><input id="eventEnd" type="datetime-local" required></label>
+    </div>
+    <label class="field"><span>Место</span><input id="eventLocation" placeholder="Необязательно"></label>
+    <label class="field"><span>Описание</span><textarea id="eventDescription" rows="3" placeholder="Необязательно"></textarea></label>
+    <div class="modal-actions">
+      <button type="button" id="deleteInModal" class="btn danger-text" style="display:none">Удалить</button>
+      <div class="spacer"></div>
+      <button type="button" id="cancelModal" class="btn">Отмена</button>
+      <button type="submit" class="btn primary">Сохранить</button>
+    </div>
+  </form>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/app.js?v=5"></script>
 </body>
 </html>
