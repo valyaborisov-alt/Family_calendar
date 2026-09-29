@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#f4f6fb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Семья">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  <link rel="stylesheet" href="/styles.css?v=5">
+  <title>Семейный календарь</title>
+</head>
+<body>
+<div class="shell">
+  <div class="layout">
+    <aside class="panel sidebar">
+      <div class="brand">
+        <div class="brand-icon">⌘</div>
+        <div><h1>Наш календарь</h1><small>Семейный планировщик</small></div>
+      </div>
+      <button type="button" id="addBtn" class="new-event">＋ Новое событие</button>
+      <div class="mini-title">Календарь</div>
+      <div id="miniCalendar" class="mini-calendar"></div>
+      <div class="section-label">Показывать</div>
+      <div class="filters">
+        <label class="filter"><input type="checkbox" data-filter="me" checked><span class="swatch me"></span><span>Я</span></label>
+        <label class="filter"><input type="checkbox" data-filter="wife" checked><span class="swatch wife"></span><span>Жена</span></label>
+        <label class="filter"><input type="checkbox" data-filter="kids" checked><span class="swatch kids"></span><span>Дети</span></label>
+        <label class="filter"><input type="checkbox" data-filter="family" checked><span class="swatch family"></span><span>Общее</span></label>
+      </div>
+      <div class="install-note">На iPad: Safari → Поделиться → «На экран Домой». Google-синхронизацию подключим следующим этапом.</div>
+    </aside>
+
+    <main class="main">
+      <div class="topbar">
+        <div class="date-title"><div class="eyebrow">Семейный календарь</div><h2 id="periodTitle"></h2></div>
+        <div class="top-actions">
+          <button type="button" id="prevBtn" class="btn icon-btn">‹</button>
+          <button type="button" id="todayBtn" class="btn">Сегодня</button>
+          <button type="button" id="nextBtn" class="btn icon-btn">›</button>
+          <div class="segmented">
+            <button type="button" data-view="today">День</button>
+            <button type="button" data-view="week">Неделя</button>
+            <button type="button" data-view="month">Месяц</button>
+          </div>
+        </div>
+      </div>
+      <section id="calendar" class="panel calendar-panel"></section>
+    </main>
+
+    <aside id="detail" class="panel detail"></aside>
+  </div>
+</div>
+
+<div id="modalBackdrop" class="modal-backdrop">
+  <form id="eventForm" class="modal">
+    <div class="modal-head">
+      <div><div id="modalMode" class="small">Новое событие</div><h3 id="modalTitle">Добавить событие</h3></div>
+      <button type="button" id="modalClose" class="close-btn">×</button>
+    </div>
+    <input type="hidden" id="eventId">
+    <label class="field"><span>Для кого</span><select id="eventWho"><option value="🏠">🏠 Общее</option><option value="👨">👨 Я</option><option value="👩">👩 Жена</option><option value="👧">👧 Дети</option></select></label>
+    <label class="field"><span>Название</span><input id="eventTitle" required placeholder="Например: школа, врач, тренировка"></label>
+    <div class="two">
+      <label class="field"><span>Начало</span><input id="eventStart" type="datetime-local" required></label>
+      <label class="field"><span>Окончание</span><input id="eventEnd" type="datetime-local" required></label>
+    </div>
+    <label class="field"><span>Место</span><input id="eventLocation" placeholder="Необязательно"></label>
+    <label class="field"><span>Описание</span><textarea id="eventDescription" rows="3" placeholder="Необязательно"></textarea></label>
+    <div class="modal-actions">
+      <button type="button" id="deleteInModal" class="btn danger-text" style="display:none">Удалить</button>
+      <div class="spacer"></div>
+      <button type="button" id="cancelModal" class="btn">Отмена</button>
+      <button type="submit" class="btn primary">Сохранить</button>
+    </div>
+  </form>
+</div>
+<div id="toast" class="toast"></div>
+<script src="/app.js?v=5"></script>
+</body>
+</html>
