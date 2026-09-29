@@ -33,7 +33,8 @@ export async function onRequestGet({request, env}) {
   });
   const data = await res.json();
   if (!res.ok || !data.refresh_token) {
-    return redirect(origin + "/?google=token_error", [clearCookie("fc_state")]);
+    const code = encodeURIComponent((data && data.error) || "unknown_error");
+    return redirect(origin + "/?google=token_error&reason=" + code, [clearCookie("fc_state")]);
   }
   const sealed = await seal(data.refresh_token, env.GOOGLE_CLIENT_SECRET);
   return redirect(origin + "/?google=connected",[
