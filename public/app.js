@@ -108,8 +108,8 @@ qs("#googleBtn").addEventListener("click",function(){if(!googleConfigured){toast
 qs("#syncBtn").addEventListener("click",function(){render().then(function(){toast("Календарь обновлён")})});
 document.addEventListener("keydown",function(e){if(e.key==="Escape")closeModal();if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="n"){e.preventDefault();openNew(null)}});
 
-var params=new URLSearchParams(location.search),g=params.get("google");
-if(g){history.replaceState({},document.title,location.pathname);if(g==="connected")setTimeout(function(){toast("Google Calendar подключён")},300);else setTimeout(function(){toast("Ошибка входа Google: "+g)},300)}
+var params=new URLSearchParams(location.search),g=params.get("google"),reason=params.get("reason");
+if(g){history.replaceState({},document.title,location.pathname);if(g==="connected")setTimeout(function(){toast("Google Calendar подключён")},300);else setTimeout(function(){toast("Ошибка входа Google: "+g+(reason?" ("+reason+")":""))},300)}
 if("serviceWorker" in navigator)navigator.serviceWorker.register("/sw.js").catch(function(){});
 checkGoogleStatus().then(render);
 })();
