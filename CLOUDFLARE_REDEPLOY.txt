@@ -1,0 +1,2 @@
+Cloudflare redeploy trigger after GOOGLE_CLIENT_SECRET was configured.
+Triggered: 2026-09-29
