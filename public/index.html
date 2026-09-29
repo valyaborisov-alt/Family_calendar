@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-title" content="Семья">
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/icon.svg">
-  <link rel="stylesheet" href="/styles.css?v=5">
+  <link rel="stylesheet" href="/styles.css?v=6">
   <title>Семейный календарь</title>
 </head>
 <body>
@@ -21,6 +21,16 @@
         <div><h1>Наш календарь</h1><small>Семейный планировщик</small></div>
       </div>
       <button type="button" id="addBtn" class="new-event">＋ Новое событие</button>
+      <div class="google-card">
+        <div class="google-row">
+          <div><div class="google-title">Google Calendar</div><span id="googleStatus" class="google-status">Не подключён</span></div>
+          <span id="googleDot" class="google-dot"></span>
+        </div>
+        <div class="google-actions">
+          <button type="button" id="googleBtn" class="google-btn google-primary">Подключить Google</button>
+          <button type="button" id="syncBtn" class="google-btn" disabled>↻</button>
+        </div>
+      </div>
       <div class="mini-title">Календарь</div>
       <div id="miniCalendar" class="mini-calendar"></div>
       <div class="section-label">Показывать</div>
@@ -30,7 +40,7 @@
         <label class="filter"><input type="checkbox" data-filter="kids" checked><span class="swatch kids"></span><span>Дети</span></label>
         <label class="filter"><input type="checkbox" data-filter="family" checked><span class="swatch family"></span><span>Общее</span></label>
       </div>
-      <div class="install-note">На iPad: Safari → Поделиться → «На экран Домой». Google-синхронизацию подключим следующим этапом.</div>
+      <div class="install-note">На iPad: Safari → Поделиться → «На экран Домой». После входа события читаются и изменяются прямо в Google Calendar «Семья».</div>
     </aside>
 
     <main class="main">
@@ -78,6 +88,8 @@
   </form>
 </div>
 <div id="toast" class="toast"></div>
-<script src="/app.js?v=5"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="/config.js?v=6"></script>
+<script src="/app.js?v=6"></script>
 </body>
 </html>
